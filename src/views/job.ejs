@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jobs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body
+    class="min-w-screen min-h-screen bg-slate-950 text-sky-50 flex flex-col flex-wrap gap-2 justify-center items-center"
+  >
+    <div class="flex flex-col gap-2 border rounded max-w-xl w-full items-center p-2 justify-center">
+      <div class="flex gap-2 items-center">
+        <a href="/jobs" class="bg-white p-1 rounded-md">
+          <img
+            src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9ImN1cnJlbnRDb2xvciIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIHN0cm9rZS1saW5lam9pbj0icm91bmQiIGNsYXNzPSJsdWNpZGUgbHVjaWRlLWhvbWUiPjxwYXRoIGQ9Im0zIDkgOS03IDkgN3YxMWEyIDIgMCAwIDEtMiAySDVhMiAyIDAgMCAxLTItMnoiLz48cG9seWxpbmUgcG9pbnRzPSI5IDIyIDkgMTIgMTUgMTIgMTUgMjIiLz48L3N2Zz4="
+          />
+        </a>
+        <span class="text-2xl font-semibold"><%= job.title%></span>
+      </div>
+
+      <div class="flex flex-col min-w-screen w-full">
+          <p><strong>Conhecimentos:</strong> <%= job.knowledge.map(item => item + " ")%></p>
+          <p><strong>Salário:</strong> <%= job.remuneration%></p>
+          <p><strong>Benefícios:</strong> <%= job.benefits.map(item => item + " ")%></p>
+          <p>
+            <strong>Status:</strong>
+            <% if(job.status) {%> <%= "Ativo" %> <% } else { %> <%= "Inativo" %>
+            <% } %>
+          </p>
+      </div>
+    </div>
+  </body>
+</html>

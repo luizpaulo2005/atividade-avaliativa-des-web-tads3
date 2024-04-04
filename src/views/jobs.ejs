@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Jobs</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.8/axios.min.js"
+      integrity="sha512-PJa3oQSLWRB7wHZ7GQ/g+qyv6r4mbuhmiDb8BjSFZ8NZ2a42oTtAq5n0ucWAwcQDlikAtkub+tPVCw4np27WCg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+  <body
+    class="min-w-screen min-h-screen bg-slate-950 text-sky-50 flex flex-col flex-wrap gap-2 justify-center items-center"
+  >
+    <div class="flex items-center gap-2">
+      <span class="text-3xl font-semibold">Jobs</span>
+      <a
+        class="bg-white p-2 text-black transition-colors rounded-md hover:cursor-pointer hover:bg-white/50"
+        href="/jobs/create-job"
+      >
+        Create a new job
+      </a>
+    </div>
+    <div class="px-3 py-2 border max-w-4xl w-full rounded-md">
+      <table class="table-auto w-full">
+        <thead class="border-b">
+          <tr>
+            <th>Nome</th>
+            <th>Conhecimentos</th>
+            <th>Salário</th>
+            <th>Benefícios</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% jobs.forEach(job => { %>
+          <tr class="">
+            <td>
+              <a href="/jobs/find?id=<%=job.id%>" class="hover:underline">
+                <%= job.title%>
+              </a>
+            </td>
+            <td><%= job.knowledge.map(item => item + " ") %></td>
+            <td><%= job.remuneration.toLocaleString("pt-br", { style: "currency", currency: "brl" })%></td>
+            <td><%= job.benefits.map(item => item + " ") %></td>
+            <td>
+              <% if(job.status) {%> <%= "Ativo" %> <% } else { %> <%= "Inativo" %> <% } %>
+            </td>
+          </tr>
+          <% })%>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
